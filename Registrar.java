@@ -2,15 +2,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Registrar extends Usuario {
+public class Registrar extends Usuario { // para el registro extendemos de usuario
 
-    String archivo = "usuarios.csv";
+    String archivo = "usuarios.csv"; // ponemos como se llama el csv al que queremos ingresar
 
     public Registrar(String usuario, String nombre, String apellido, int telefono, String rol, String contraseña) {
-        super(usuario, nombre, apellido, telefono, rol, contraseña);
+        super(usuario, nombre, apellido, telefono, rol, contraseña); // llamamos al constructor de Usuario
     }
 
-    public void guardarusuario(Usuario usuario) {
+    public void guardarusuario(Usuario usuario) { // guarda los datos del usuario en el csv con los gets que estan en la
+                                                  // superclase
 
         try {
             FileWriter insertar = new FileWriter(archivo, true);
@@ -34,7 +35,7 @@ public class Registrar extends Usuario {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // metodo para solicitarle al usuario su información
         Scanner leer = new Scanner(System.in);
         System.out.print("Para ingresar un nuevo usuario, proporciona la siguiente información: \n");
         System.out.print("Usuario: ");

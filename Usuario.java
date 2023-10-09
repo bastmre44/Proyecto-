@@ -1,12 +1,15 @@
 public class Usuario {
-    protected String usuario;
+    protected String usuario; // se crea las variables
     protected String nombre;
     protected String apellido;
     protected int telefono;
     protected String rol;
     protected String contraseña;
 
-    public Usuario(String usuario, String nombre, String apellido, int telefono, String rol, String contraseña) {
+    public Usuario(String usuario, String nombre, String apellido, int telefono, String rol, String contraseña) { // se
+                                                                                                                  // crea
+                                                                                                                  // el
+                                                                                                                  // constructor
         this.usuario = usuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -15,7 +18,7 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public String getUsuario() {
+    public String getUsuario() { // se hacen los gets
         return usuario;
     }
 
