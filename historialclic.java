@@ -1,3 +1,3 @@
-public historialclic Main {
+public class historialclinico {
     
 }
