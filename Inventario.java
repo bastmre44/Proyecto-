@@ -1,56 +1,73 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class Inventario {
-    int id_producto;
-    String nombre;
-    int precio;
-    int stock;
-    int vendidos;
     String archivo = "inventario.csv";
+    Scanner leer = new Scanner(System.in); // Declarar Scanner como variable de instancia
 
-    public Inventario(int id_producto, String nombre, int precio, int stock, int vendidos) {
-        this.id_producto = id_producto;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
-        this.vendidos = vendidos;
+    public void buscarProductoPorId(int idProducto) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(archivo));
+            String linea;
+
+            // Omitir la primera línea (encabezados)
+            br.readLine();
+
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                int id = Integer.parseInt(datos[0].trim());
+
+                if (id == idProducto) {
+                    // Mostrar la información del producto encontrado.
+                    System.out.println("ID del Producto: " + datos[0]);
+                    System.out.println("Nombre: " + datos[1]);
+                    System.out.println("Precio: " + datos[2]);
+                    System.out.println("Stock: " + datos[3]);
+                    System.out.println("Vendidos: " + datos[4]);
+                    br.close(); // Cerrar el archivo después de encontrar el producto.
+                    return;
+                }
+            }
+
+            br.close();
+            System.out.println("No se encontró un producto con el ID especificado.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public int getId() {
-        return id_producto;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public int getVendidos() {
-        return vendidos;
-    }
-
-    public void agregarproducto() {
+    public void agregarProducto() {
         try {
             FileWriter insertar = new FileWriter(archivo, true);
             System.out.print("Para ingresar un nuevo producto, proporciona la siguiente información: \n");
-            insertar.append(String.valueOf(getId()));
+            
+            System.out.print("Id del producto: ");
+            String idInput = leer.nextLine();
+            idInput = idInput.replaceAll("[^0-9]", ""); // Eliminar caracteres no numéricos
+            int id = Integer.parseInt(idInput);
+            
+            System.out.print("Nombre: ");
+            String nombre = leer.nextLine();
+            System.out.print("Precio: ");
+            int precio = Integer.parseInt(leer.nextLine());
+            System.out.print("Cuántos hay en stock: ");
+            int stock = Integer.parseInt(leer.nextLine());
+            System.out.print("Cuantos se han vendido: ");
+            int vendidos = Integer.parseInt(leer.nextLine());
+
+            insertar.append(String.valueOf(id));
             insertar.append(",");
-            insertar.append(getNombre());
+            insertar.append(nombre);
             insertar.append(",");
-            insertar.append(String.valueOf(getPrecio()));
+            insertar.append(String.valueOf(precio));
             insertar.append(",");
-            insertar.append(String.valueOf(getStock()));
+            insertar.append(String.valueOf(stock));
             insertar.append(",");
-            insertar.append(String.valueOf(getVendidos()));
+            insertar.append(String.valueOf(vendidos));
             insertar.append("\n");
             insertar.flush();
             insertar.close();
@@ -61,27 +78,26 @@ public class Inventario {
     }
 
     public static void main(String[] args) {
-        Scanner leer = new Scanner(System.in);
+        Inventario inventario = new Inventario();
+
         System.out.println("Selecciona una opción: ");
         System.out.println("1. Agregar un nuevo producto");
         System.out.println("2. Ver información de un producto");
-        int opcion = Integer.parseInt(leer.nextLine());
+
+        int opcion = Integer.parseInt(inventario.leer.nextLine());
 
         if (opcion == 1) {
-            System.out.print("Id del producto: ");
-            int id = Integer.parseInt(leer.nextLine());
-            System.out.print("Nombre: ");
-            String nombre = leer.nextLine();
-            System.out.print("Precio: ");
-            int precio = Integer.parseInt(leer.nextLine());
-            System.out.print("Cuántos hay en stock: ");
-            int stock = Integer.parseInt(leer.nextLine());
-            System.out.print("Cuantos se han vendido: ");
-            int vendidos = Integer.parseInt(leer.nextLine());
-
-            Inventario inventario = new Inventario(id, nombre, precio, stock, vendidos);
-            inventario.agregarproducto();
+            inventario.agregarProducto();
+        } else if (opcion == 2) {
+            System.out.print("Ingresa el ID del producto a buscar (números): ");
+            String idInput = inventario.leer.nextLine();
+            idInput = idInput.replaceAll("[^0-9]", ""); // Eliminar caracteres no numéricos
+            int idBuscado = Integer.parseInt(idInput);
+            inventario.buscarProductoPorId(idBuscado);
+        } else {
+            System.out.println("Opción no válida.");
         }
-        leer.close();
+
+        inventario.leer.close(); // Cerrar el Scanner
     }
 }
