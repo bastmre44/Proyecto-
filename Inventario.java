@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
 
+
 public class Inventario {
     String archivo = "inventario.csv";
     Scanner leer = new Scanner(System.in); // Declarar Scanner como variable de instancia
-
+        // Método para buscar un producto por ID
     public void buscarProductoPorId(int idProducto) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(archivo));
@@ -39,7 +40,7 @@ public class Inventario {
             e.printStackTrace();
         }
     }
-
+    // Método para agregar un nuevo producto al inventario
     public void agregarProducto() {
         try {
             FileWriter insertar = new FileWriter(archivo, true);
@@ -87,12 +88,13 @@ public class Inventario {
         int opcion = Integer.parseInt(inventario.leer.nextLine());
 
         if (opcion == 1) {
-            inventario.agregarProducto();
+            inventario.agregarProducto(); // Llamar al método para agregar un producto
         } else if (opcion == 2) {
-            System.out.print("Ingresa el ID del producto a buscar (números): ");
+            System.out.print("Ingresa el ID del producto a buscar (números): "); 
             String idInput = inventario.leer.nextLine();
             idInput = idInput.replaceAll("[^0-9]", ""); // Eliminar caracteres no numéricos
-            int idBuscado = Integer.parseInt(idInput);
+            int idBuscado = Integer.parseInt(idInput);  // Llamar al método para buscar un producto por ID
+        } else {
             inventario.buscarProductoPorId(idBuscado);
         } else {
             System.out.println("Opción no válida.");

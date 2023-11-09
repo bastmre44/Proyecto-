@@ -1,11 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class historialclic {
     private String archivoClientes = "clientes.csv";
 
-    public void mostrarHistorialPorCliente(String nombreCliente) {
+    public void mostrarHistorialPorUsuario(String nombreUsuario) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(archivoClientes));
             String linea;
@@ -15,7 +16,7 @@ public class historialclic {
                 String[] datos = linea.split(",");
                 String usuario = datos[0].trim(); // El índice 0 corresponde a la columna "Usuario" 
 
-                if (usuario.equalsIgnoreCase(nombreCliente)) {
+                if (usuario.equalsIgnoreCase(nombreUsuario)) {
                     // Mostrar todos los datos del registro del historial clínico.
                     System.out.println("Usuario: " + datos[0]);
                     System.out.println("Fecha: " + datos[1]);
@@ -33,7 +34,7 @@ public class historialclic {
             br.close();
 
             if (contador == 0) {
-                System.out.println("No se encontraron registros para el cliente " + nombreCliente);
+                System.out.println("No se encontraron registros para el usuario " + nombreUsuario);
             } else {
                 System.out.println("Total de registros encontrados: " + contador);
             }
@@ -45,11 +46,12 @@ public class historialclic {
 
     public static void main(String[] args) {
         historialclic historial = new historialclic();
+        Scanner leer = new Scanner(System.in);
 
-        if (args.length > 0) {
-            historial.mostrarHistorialPorCliente(args[0]);
-        } else {
-            System.out.println("Por favor, ingresa el nombre de cliente como argumento.");
-        }
+        System.out.print("Por favor, ingresa el nombre de usuario: ");
+        String nombreUsuario = leer.nextLine();
+        historial.mostrarHistorialPorUsuario(nombreUsuario);
+
+        leer.close();
     }
 }
