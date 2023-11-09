@@ -11,29 +11,10 @@ public class Menu {
 
         if (opcion == 1) {
             Login.main(args);
-            System.out.println("Qué deseas hacer? selecciona una opcion");
-            System.out.println("1. Reservar una cita");
-            System.out.println("2. Ver historial clinico");
-            System.out.println("3. Ir a inventario");
-            System.out.println("4. Salir");
-            int a = Integer.parseInt(leer.nextLine());
-
-            if (a == 1) {
-                // consulta
-            }
-            if (a == 2) {
-                historialclic.main(args);
-            }
-            if (a == 3) {
-                Inventario.main(args);
-            }
-            if (a == 4) {
-                System.exit(0);
-            }
-
         }
 
         if (opcion == 2) {
+            System.out.println();
             Registrar.main(args);
         }
 
