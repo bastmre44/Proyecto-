@@ -23,3 +23,35 @@ public class Consulta {
         this.hora = hora;
         this.total = total;
     }
+
+    // Commit2 (getters)
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public String getDiagn() {
+        return diagnostico;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public String getFarmacia() {
+        return farmacia;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    // Commit3 (edición de csv "usuarios" y "clientes")
+}
