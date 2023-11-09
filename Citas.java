@@ -45,8 +45,8 @@ public class Citas extends Consulta {
         Scanner scan = new Scanner(System.in)
          
         // Menú
-        System.out.println("Por favor, ingrese la información solicitada para registrar una cita");
-        System.out.println("Nombre del paciente: ");
+        System.out.println("Por favor, ingresa  la información solicitada para registrar una cita");
+        System.out.println("Usuario: ");
         String usuario = scan.nextLine();
 
         System.out.println("Fecha para la consulta (dd/mm/aa): ");
