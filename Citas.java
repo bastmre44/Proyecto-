@@ -2,6 +2,7 @@
 //Commit 4 (Subclase citas)
 import java.io.*;
 import java.util.*;
+String java.util.Scanner.nextLine()
 
 public class Citas extends Consulta {
 
@@ -41,7 +42,7 @@ public class Citas extends Consulta {
         }
 
     // Commit6 (solicitar información del usuario)
-    public static void main(String[] args){
+    public static void Consulta(String[] args){
         Scanner scan = new Scanner(System.in)
          
         // Menú
@@ -67,5 +68,5 @@ public class Citas extends Consulta {
         System.out.println("Valor total previsto para la cita: ");
         int total = scan.nextLine();
     }
-
+}
 }
