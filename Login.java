@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Login {
-
     private String archivo = "usuarios.csv"; // ponemos como se llama el csv al que queremos ingresar
 
     public boolean login(String nombre, String contraseña) { // metodo para almacenar y verificar el usuario y
@@ -27,6 +26,7 @@ public class Login {
                     if (usuario.equals(nombre) && Contraseña.equals(contraseña)) {
                         leer.close();
                         return true;
+
                     }
                 }
             }
@@ -45,15 +45,48 @@ public class Login {
         System.out.print("Contraseña: ");
         String contraseña = leer.nextLine();
 
-        leer.close();
-
         Login login = new Login();
         boolean ingreso = login.login(nombre, contraseña);
 
         if (ingreso) {
+            System.out.println();
+            System.out.println();
+            System.out.println();
             System.out.println("Bienvenido " + nombre);
+            System.out.println();
+            System.out.println();
+            System.out.println("Qué deseas hacer? selecciona una opcion");
+            System.out.println("1. Reservar una cita");
+            System.out.println("2. Ver historial clinico");
+            System.out.println("3. Ir a inventario");
+            System.out.println("4. Salir");
+            int a = leer.nextInt();
+
+            switch (a) {
+                case 1:
+                    System.out.println("hola");
+                    break;
+
+                case 2:
+                    System.out.println();
+                    historialclic.main(args);
+                    break;
+
+                case 3:
+                    System.out.println();
+                    Inventario.main(args);
+                    break;
+
+                case 4:
+                    System.exit(0);
+                    break;
+            }
+
         } else {
             System.out.println("Error, usuario o contraseña incorrectos.");
+            System.exit(0);
         }
+
+        leer.close();
     }
 }
