@@ -65,7 +65,7 @@ public class Login {
             switch (a) {
                 case 1:
                     System.out.println();
-
+                    Cita.main(args);
                     break;
 
                 case 2:
