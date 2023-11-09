@@ -1,8 +1,7 @@
 
 //Commit 4 (Subclase citas)
 import java.io.*;
-import java.util.*;
-String java.util.Scanner.nextLine()
+import java.util.*;import java.util.Scanner.nextLine();
 
 public class Citas extends Consulta {
 
@@ -68,5 +67,4 @@ public class Citas extends Consulta {
         System.out.println("Valor total previsto para la cita: ");
         int total = scan.nextLine();
     }
-}
-}
+}}
