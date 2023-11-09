@@ -64,6 +64,7 @@ public class Inventario {
         Scanner leer = new Scanner(System.in);
         System.out.println("Selecciona una opción: ");
         System.out.println("1. Agregar un nuevo producto");
+        System.out.println("2. Ver información de un producto");
         int opcion = Integer.parseInt(leer.nextLine());
 
         if (opcion == 1) {
