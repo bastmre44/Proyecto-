@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class historialclic {
-    private String archivoClientes = "clientes.csv";
+    private String archivoClientes = "clientes.csv"; // Nombre del archivo CSV que contiene los registros del historial clínico
 
     public void mostrarHistorialPorUsuario(String nombreUsuario) {
         try {
