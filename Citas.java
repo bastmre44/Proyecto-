@@ -11,7 +11,7 @@ public class Citas extends Consulta {
             int total) {
         super(usuario, fecha, diagnostico, doctor, farmacia, hora, total);
     }
-// Commit 5 (guardar datos del usuario)
+
     public void guardarcitas(Consulta consulta) {
 
         try {
@@ -39,8 +39,33 @@ public class Citas extends Consulta {
         } catch (IOException e) {
             System.err.println("Error, no se guardaron los datos: " + e.getMessage());
         }
-    }
 
-    
+    // Commit6 (solicitar información del usuario)
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in)
+         
+        // Menú
+        System.out.println("Por favor, ingrese la información solicitada para registrar una cita");
+        System.out.println("Nombre del paciente: ");
+        String usuario = scan.nextLine();
+
+        System.out.println("Fecha para la consulta (dd/mm/aa): ");
+        String fecha = scan.nextLine();
+
+        System.out.println("Diagnostico previo: ");
+        String diagnostico = scan.nextLine();
+
+        System.out.println("Doctor asignado: ");
+        String doctor = scan.nextLine();
+
+        System.out.println("Productos requeridos de la farmacia: ");
+        String farmacia = scan.nextLine();
+
+        System.out.println("Hora para la cita: ");
+        int hora = scan.nextLine();
+
+        System.out.println("Valor total previsto para la cita: ");
+        int total = scan.nextLine();
+    }
 
 }
