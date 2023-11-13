@@ -1,15 +1,13 @@
-Usuario,锘縁echa,Hora,Diagnostico,Doctor,Farmacia,Total
-<<<<<<< Updated upstream
-lils,2023-01-15,10:30,Infecci贸n ocular,Dr. Rodr铆guez,Lentes,35.50
-Mishell,2023-02-05,14:15,Examen de la vista,Dr. Garc铆a,gotas,80.25
-ast,2023-02-28,09:45,Conjuntivitis,Dr. L贸pez,gotas,15.75
-dulcito,2023-03-12,16:20,Revisi贸n general,Dr. Mart铆nez,Lentes de contacto,120.00
-lastf,2023-04-03,11:10,Lesi贸n ocular,Dr. S谩nchez,gotas,45.00
-=======
+Usuario,Fecha,Hora,Diagnostico,Doctor,Farmacia,Total
+lils,15/01/2023,10:30,Infeccion ocular,Dr. Rodriguez,Lentes,35.5
+Mishell,05/02/2023,14:15,Examen de la vista,Dr. Garci璦,gotas,80.25
+ast,28/02/2023,09:45,Conjuntivitis,Dr. Lopez,gotas,15.75
+dulcito,12/03/2023,16:20,Revision general,Dr. Martinez,Lentes de contacto,120
+lastf,03/04/2023,11:10,Lesion ocular,Dr. Sanchez,gotas,45
 cliente1,12/12/2023,14:00,revision rutinaria,Samuel,gotas,100
 cliente2,15/11/2023,16:00,revision rutinaria,Juan,gotas,200
 cliente3,20/11/2023,18:00,revision rutinaria,Roberto,lentes,100
 cliente4,18/11/2023,20:00,revision rutinaria,Samuel,lentes,200
 cliente5,20/12/2023,04:00,cirugia,Juan,repuesto,400
 usu,01/01/2024,05:00,cirugia,Roberto,repuesto,500
->>>>>>> Stashed changes
+usu2,2023-12-14,20:22,cirugia,Miguel,lentes,500

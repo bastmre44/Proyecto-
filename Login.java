@@ -59,7 +59,8 @@ public class Login {
             System.out.println("1. Reservar una cita");
             System.out.println("2. Ver historial clinico");
             System.out.println("3. Ir a inventario");
-            System.out.println("4. Salir");
+            System.out.println("4. Eliminar cita");
+            System.out.println("5. Salir");
             int a = leer.nextInt();
 
             switch (a) {
@@ -79,6 +80,10 @@ public class Login {
                     break;
 
                 case 4:
+                    System.out.println("en proceso...");
+                    // Cancelar.main(args);
+
+                case 5:
                     System.exit(0);
                     break;
             }

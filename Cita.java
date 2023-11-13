@@ -1,20 +1,22 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+//import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Cita { // crear clase
     String archivo = "clientes.csv";
     String usuario;
     LocalDate fecha;
-    int hora;
+    LocalTime hora;
     String diagnostico;
     String doctor;
     String farmacia;
     int total;
 
-    public Cita(String usuario, LocalDate fecha, int hora, String diagnostico, String doctor, String farmacia, // crear
-                                                                                                               // constructor
+    public Cita(String usuario, LocalDate fecha, LocalTime hora, String diagnostico, String doctor, String farmacia, // crear
+            // constructor
             int total) {
         this.usuario = usuario;
         this.fecha = fecha;
@@ -33,7 +35,7 @@ public class Cita { // crear clase
         return fecha;
     }
 
-    public int getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
@@ -86,8 +88,9 @@ public class Cita { // crear clase
         System.out.print("Fecha (AAAA-MM-DD): ");
         String fechaStr = leer.nextLine();
         LocalDate fecha = LocalDate.parse(fechaStr);
-        System.out.print("Hora: ");
-        int hora = Integer.parseInt(leer.nextLine());
+        System.out.print("Hora (HH:MM): ");
+        LocalTime hora = LocalTime.parse(leer.nextLine());
+        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:MM");
         System.out.print("Diagnóstico: ");
         String diagnostico = leer.nextLine();
         System.out.print("Doctor: ");
