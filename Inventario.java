@@ -108,13 +108,49 @@ public class Inventario {
         }
     }
 
+    public void verVentasPorProducto() {
+        try {
+            System.out.print("Ingresa el ID del producto para ver las ventas (números): ");
+            String idInput = leer.nextLine();
+            idInput = idInput.replaceAll("[^0-9]", "");
+            int idProducto = Integer.parseInt(idInput);
+
+            BufferedReader br = new BufferedReader(new FileReader(archivo));
+            String linea;
+            br.readLine();
+
+            System.out.println("Ventas por Producto:");
+
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",");
+                int id = Integer.parseInt(datos[0].trim());
+
+                if (id == idProducto) {
+                    String nombre = datos[1];
+                    int vendidos = Integer.parseInt(datos[4].trim());
+
+                    System.out.println("Producto: " + nombre + ", ID: " + id + ", Vendidos: " + vendidos);
+                    br.close();
+                    return;
+                }
+            }
+
+            br.close();
+            System.out.println("No se encontró un producto con el ID especificado.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void ejecutar() {
         while (true) {
             System.out.println("Selecciona una opción: ");
             System.out.println("1. Agregar un nuevo producto");
             System.out.println("2. Ver información de un producto");
             System.out.println("3. Actualizar existencia de un producto");
-            System.out.println("4. Salir");
+            System.out.println("4. Ver ventas por producto");
+            System.out.println("5. Salir");
 
             int opcion = Integer.parseInt(leer.nextLine());
 
@@ -141,6 +177,9 @@ public class Inventario {
                     actualizarExistenciaProducto(idActualizar, cantidadActualizar);
                     break;
                 case 4:
+                    verVentasPorProducto();
+                    break;
+                case 5:
                     System.out.println("Saliendo del programa. ¡Hasta luego!");
                     leer.close();
                     System.exit(0);
