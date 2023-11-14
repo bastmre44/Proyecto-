@@ -60,7 +60,8 @@ public class Login {
             System.out.println("2. Ver historial clinico");
             System.out.println("3. Ir a inventario");
             System.out.println("4. Eliminar cita");
-            System.out.println("5. Salir");
+            System.out.println("5. Editar datos personales");
+            System.out.println("6. Salir");
             int a = leer.nextInt();
 
             switch (a) {
@@ -84,6 +85,10 @@ public class Login {
                     Cancelar.main(args);
 
                 case 5:
+                    ActualizarUsuarios.main(args);
+                    break;
+
+                case 6:
                     System.exit(0);
                     break;
             }
