@@ -80,8 +80,8 @@ public class Login {
                     break;
 
                 case 4:
-                    System.out.println("en proceso...");
-                    // Cancelar.main(args);
+                    System.out.println();
+                    Cancelar.main(args);
 
                 case 5:
                     System.exit(0);

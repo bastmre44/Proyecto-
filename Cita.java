@@ -55,6 +55,8 @@ public class Cita { // crear clase
         return total;
     }
 
+    // (hacerlo menú)
+
     public void guardar(Cita cita) { // metodo para guardar la info
         try {
             FileWriter insertar = new FileWriter(archivo, true);

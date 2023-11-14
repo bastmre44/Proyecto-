@@ -1,6 +1,6 @@
 Usuario,Fecha,Hora,Diagnostico,Doctor,Farmacia,Total
 lils,15/01/2023,10:30,Infeccion ocular,Dr. Rodriguez,Lentes,35.5
-Mishell,05/02/2023,14:15,Examen de la vista,Dr. Garci­a,gotas,80.25
+Mishell,05/02/2023,14:15,Examen de la vista,Dr. Garciï¿½a,gotas,80.25
 ast,28/02/2023,09:45,Conjuntivitis,Dr. Lopez,gotas,15.75
 dulcito,12/03/2023,16:20,Revision general,Dr. Martinez,Lentes de contacto,120
 lastf,03/04/2023,11:10,Lesion ocular,Dr. Sanchez,gotas,45
@@ -10,4 +10,3 @@ cliente3,20/11/2023,18:00,revision rutinaria,Roberto,lentes,100
 cliente4,18/11/2023,20:00,revision rutinaria,Samuel,lentes,200
 cliente5,20/12/2023,04:00,cirugia,Juan,repuesto,400
 usu,01/01/2024,05:00,cirugia,Roberto,repuesto,500
-usu2,2023-12-14,20:22,cirugia,Miguel,lentes,500
