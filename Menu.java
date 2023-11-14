@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Menu {
     public static void main(String[] args) {
         boolean go = true;
+        Scanner leer = new Scanner(System.in); // objeto scanner
 
         while (go) {
-            Scanner leer = new Scanner(System.in); // objeto scanner
             System.out.println("Bienvenido al sistema de Swift Vision, por favor selecciona una opción ");
             System.out.println("1. Iniciar Sesión");
             System.out.println("2. Registrarse");
@@ -24,15 +24,13 @@ public class Menu {
 
                 case 3:
                     go = false;
+                    break;
 
                 default:
                     System.out.println("\u001B[31mOpción invalida");
                     System.out.println("\u001B[37m");
                     break;
             }
-            leer.close();
         }
-
     }
-
 }
