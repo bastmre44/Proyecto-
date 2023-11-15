@@ -3,14 +3,16 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
+//se importan las librerias.
 
-public class Inventario {
-    String archivo = "inventario.csv";
+public class Inventario { // clase inventario
+    
+    String archivo = "inventario.csv";// archivo donde se guarda la información 
     Scanner leer = new Scanner(System.in);
 
-    public void buscarProductoPorId(int idProducto) {
+    public void buscarProductoPorId(int idProducto) {//método para buscar producto por id
         try {
-            BufferedReader br = new BufferedReader(new FileReader(archivo));
+            BufferedReader br = new BufferedReader(new FileReader(archivo));  //se lee la primera linea del encabezado 
             String linea;
             br.readLine();
 
@@ -25,17 +27,20 @@ public class Inventario {
                     System.out.println("Stock: " + datos[3]);
                     System.out.println("Vendidos: " + datos[4]);
                     br.close();
+                    //para imprimir la información que se encontró del producto 
                     return;
                 }
             }
 
             br.close();
             System.out.println("No se encontró un producto con el ID especificado.");
+            //se muestra este mensaje si no se encontró info del producto
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    // Método para agregar un nuevo producto al inventario.
 
     public void agregarProducto() {
         try {
@@ -55,6 +60,7 @@ public class Inventario {
             int stock = Integer.parseInt(leer.nextLine());
             System.out.print("Cuantos se han vendido: ");
             int vendidos = Integer.parseInt(leer.nextLine());
+            //para llenar la info
 
             insertar.append(String.valueOf(id));
             insertar.append(",");
@@ -73,16 +79,17 @@ public class Inventario {
             System.err.println("Error, no se guardaron los datos: " + e.getMessage());
         }
     }
-
+//metodo para actulizar productos 
+    
     public void actualizarExistenciaProducto(int idProducto, int cantidad) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(archivo));
-            String linea;
-            StringBuilder nuevoContenido = new StringBuilder();
 
             br.readLine();
 
-            while ((linea = br.readLine()) != null) {
+            while ((linea = br.readLine()) != null) {            String linea;
+            StringBuilder nuevoContenido = new StringBuilder();
+
                 String[] datos = linea.split(",");
                 int id = Integer.parseInt(datos[0].trim());
 
@@ -98,6 +105,7 @@ public class Inventario {
             }
 
             br.close();
+            // Escribe el nuevo contenido en el archivo CSV.
 
             FileWriter escribir = new FileWriter(archivo);
             escribir.write(nuevoContenido.toString());
@@ -107,7 +115,8 @@ public class Inventario {
             e.printStackTrace();
         }
     }
-
+//metodo para ver ventas por producto
+    
     public void verVentasPorProducto() {
         try {
             System.out.print("Ingresa el ID del producto para ver las ventas (números): ");
@@ -142,6 +151,8 @@ public class Inventario {
             e.printStackTrace();
         }
     }
+
+        // Método principal para ejecutar la clase
 
     public void ejecutar() {
         while (true) {
@@ -190,7 +201,7 @@ public class Inventario {
     }
 
     public static void main(String[] args) {
-        Inventario inventario = new Inventario();
+        Inventario inventario = new Inventario(); // Llamada al método que inicia la ejecución del programa
         inventario.ejecutar();
     }
 }
