@@ -40,7 +40,7 @@ public class Inventario {
     public void agregarProducto() {
         try {
             FileWriter insertar = new FileWriter(archivo, true);
-            System.out.print("Para ingresar un nuevo producto, proporciona la siguiente información: \n");
+            System.out.print("\nPara ingresar un nuevo producto, proporciona la siguiente información: \n");
 
             System.out.print("Id del producto: ");
             String idInput = leer.nextLine();
@@ -68,7 +68,7 @@ public class Inventario {
             insertar.append("\n");
             insertar.flush();
             insertar.close();
-            System.out.println("El producto se ha guardado exitosamente.");
+            System.out.println("El producto se ha guardado exitosamente.\n");
         } catch (IOException e) {
             System.err.println("Error, no se guardaron los datos: " + e.getMessage());
         }
@@ -110,6 +110,7 @@ public class Inventario {
 
     public void verVentasPorProducto() {
         try {
+            System.out.println();
             System.out.print("Ingresa el ID del producto para ver las ventas (números): ");
             String idInput = leer.nextLine();
             idInput = idInput.replaceAll("[^0-9]", "");
@@ -145,7 +146,7 @@ public class Inventario {
 
     public void ejecutar() {
         while (true) {
-            System.out.println("Selecciona una opción: ");
+            System.out.println("\nSelecciona una opción: ");
             System.out.println("1. Agregar un nuevo producto");
             System.out.println("2. Ver información de un producto");
             System.out.println("3. Actualizar existencia de un producto");
@@ -159,6 +160,7 @@ public class Inventario {
                     agregarProducto();
                     break;
                 case 2:
+                    System.out.println();
                     System.out.print("Ingresa el ID del producto a buscar (números): ");
                     String idInput = leer.nextLine();
                     idInput = idInput.replaceAll("[^0-9]", "");

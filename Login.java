@@ -39,7 +39,7 @@ public class Login {
 
     public static void main(String[] args) { // metodo para solicitarle al usuario sus credenciales
         Scanner leer = new Scanner(System.in);
-        System.out.println("Bienvenido al programa, por favor brinda los datos que se te solicitan:");
+        System.out.println("\nBienvenido al programa, por favor brinda los datos que se te solicitan:");
         System.out.print("Usuario: ");
         String nombre = leer.nextLine();
         System.out.print("Contraseña: ");

@@ -129,7 +129,7 @@ public class Cita {
             }
         }
 
-        System.out.print("Hora: ");
+        System.out.print("Hora (HH:MM): ");
         int hora = Integer.parseInt(leer.nextLine());
         System.out.print("Diagnóstico: ");
         String diagnostico = leer.nextLine();

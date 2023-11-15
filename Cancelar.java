@@ -41,6 +41,6 @@ public class Cancelar {
         }
 
         // Para volver al Menu.java
-        Login.main(args);
+
     }
 }
