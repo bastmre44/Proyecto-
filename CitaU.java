@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -10,13 +11,14 @@ public class CitaU {
     String archivo = "clientes.csv";
     String usuario;
     LocalDate fecha;
-    int hora;
+    LocalTime hora;
     String diagnostico;
     String doctor;
     String farmacia;
     int total;
 
-    public CitaU(String usuario, LocalDate fecha, int hora, String diagnostico, String doctor, String farmacia, int total) {
+    public CitaU(String usuario, LocalDate fecha, LocalTime hora, String diagnostico, String doctor, String farmacia,
+            int total) {
         this.usuario = usuario;
         this.fecha = fecha;
         this.hora = hora;
@@ -34,7 +36,7 @@ public class CitaU {
         return fecha;
     }
 
-    public int getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
@@ -62,7 +64,7 @@ public class CitaU {
                 insertar.append(",");
                 insertar.append(cita.getFecha().toString());
                 insertar.append(",");
-                insertar.append(String.valueOf(cita.getHora()));
+                insertar.append(cita.getHora().toString());
                 insertar.append(",");
                 insertar.append(cita.getDiagnostico());
                 insertar.append(",");
@@ -98,13 +100,13 @@ public class CitaU {
 
                 try {
                     LocalDate fechaE = LocalDate.parse(columnas[1].trim());
-                    int horaE = Integer.parseInt(columnas[2].trim());
+                    LocalTime horaE = LocalTime.parse(columnas[2].trim());
 
                     if (fechaE.equals(citaa.getFecha()) && horaE == citaa.getHora()) {
                         return true;
                     }
                 } catch (DateTimeParseException e) {
-                    System.err.println(" " + e.getMessage());
+                    System.err.println(" ");
                 }
             }
         } catch (IOException e) {
@@ -131,8 +133,17 @@ public class CitaU {
             }
         }
 
-        System.out.print("Hora: ");
-        int hora = Integer.parseInt(leer.nextLine());
+        LocalTime hora = null;
+        while (hora == null) {
+            try {
+                System.out.print("Hora (HH:MM): ");
+                String horaStr = leer.nextLine();
+                hora = LocalTime.parse(horaStr);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de hora incorrecto. Inténtalo de nuevo.");
+            }
+        }
+
         System.out.print("Diagnóstico: ");
         String diagnostico = leer.nextLine();
         System.out.print("Doctor: ");
@@ -142,7 +153,7 @@ public class CitaU {
         System.out.print("Total: ");
         int total = Integer.parseInt(leer.nextLine());
 
-        leer.close();
+        // leer.close();
 
         CitaU cita = new CitaU(usuario, fecha, hora, diagnostico, doctor, farmacia, total);
         cita.guardarCitaU(cita);

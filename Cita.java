@@ -146,7 +146,7 @@ public class Cita {
         System.out.print("Total: ");
         int total = Integer.parseInt(leer.nextLine());
 
-        leer.close();
+        // leer.close();
 
         Cita cita = new Cita(usuario, fecha, hora, diagnostico, doctor, farmacia, total);
         cita.guardar(cita);
