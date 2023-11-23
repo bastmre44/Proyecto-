@@ -1,22 +1,19 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
+import java.util.*;
+import java.io.*;
+import java.time.*;
 import java.time.format.DateTimeParseException;
-import java.util.Scanner;
 
 public class Cita {
     String archivo = "clientes.csv";
     String usuario;
     LocalDate fecha;
-    int hora;
+    LocalTime hora;
     String diagnostico;
     String doctor;
     String farmacia;
     int total;
 
-    public Cita(String usuario, LocalDate fecha, int hora, String diagnostico, String doctor, String farmacia, // constructor
+    public Cita(String usuario, LocalDate fecha, LocalTime hora, String diagnostico, String doctor, String farmacia, // constructor
             int total) {
         this.usuario = usuario;
         this.fecha = fecha;
@@ -35,7 +32,7 @@ public class Cita {
         return fecha;
     }
 
-    public int getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
@@ -63,7 +60,7 @@ public class Cita {
                 insertar.append(",");
                 insertar.append(cita.getFecha().toString());
                 insertar.append(",");
-                insertar.append(String.valueOf(cita.getHora()));
+                insertar.append(cita.getHora().toString());
                 insertar.append(",");
                 insertar.append(cita.getDiagnostico());
                 insertar.append(",");
@@ -77,7 +74,7 @@ public class Cita {
                 insertar.close();
                 System.out.println("Los datos de la cita han sido guardados exitosamente.");
             } catch (IOException e) {
-                System.err.println("Error, no se guardaron los datos: " + e.getMessage());
+                System.err.println("Error, no se guardaron los datos: ");
             }
         } else {
             System.out.println("Cita no disponible. La fecha y hora ya están ocupadas por otra cita.");
@@ -96,13 +93,13 @@ public class Cita {
 
                 try {
                     LocalDate fechaE = LocalDate.parse(columnas[1].trim());
-                    int horaE = Integer.parseInt(columnas[2].trim());
+                    LocalTime horaE = LocalTime.parse(columnas[2].trim());
 
                     if (fechaE.equals(citaa.getFecha()) && horaE == citaa.getHora()) {
                         return true;
                     }
                 } catch (DateTimeParseException e) {
-                    System.err.println(" " + e.getMessage());
+                    System.err.println(" ");
                 }
             }
         } catch (IOException e) {
@@ -129,8 +126,17 @@ public class Cita {
             }
         }
 
-        System.out.print("Hora: ");
-        int hora = Integer.parseInt(leer.nextLine());
+        LocalTime hora = null;
+        while (hora == null) {
+            try {
+                System.out.print("Hora (HH:MM): ");
+                String horaStr = leer.nextLine();
+                hora = LocalTime.parse(horaStr);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de hora incorrecto. Inténtalo de nuevo.");
+            }
+        }
+
         System.out.print("Diagnóstico: ");
         String diagnostico = leer.nextLine();
         System.out.print("Doctor: ");
